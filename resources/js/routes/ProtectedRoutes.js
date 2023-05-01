@@ -1,15 +1,16 @@
 // Here we include the components which need to be accesses after successful login.
-import {Route, Switch} from 'react-router-dom';
-import {Button, Layout} from 'antd';
-import {useDispatch, useSelector} from 'react-redux';
-import {LoginOutlined} from '@ant-design/icons';
+import { Route, Switch } from 'react-router-dom';
+import { Button, Layout } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { LoginOutlined } from '@ant-design/icons';
 import actions from '../redux/Authenticate/actions';
 import routes from './routes';
+import { DoubleNavbar } from '../components/layout/Navbar';
 
-const {Header, Content} = Layout;
+const { Header, Content } = Layout;
 
 function ProtectedRoutes() {
-  const {name, logOutLoader} = useSelector(state => state.authenticateReducer)
+  const { name, logOutLoader } = useSelector(state => state.authenticateReducer)
 
   const dispatch = useDispatch();
 
@@ -20,8 +21,8 @@ function ProtectedRoutes() {
   };
   return (
     <Layout className="layout">
-      <Header>
-        <div className="header-info">
+      {/* <Header> */}
+      {/* <div className="header-info">
           <div className="name">{name}</div>
           <Button
             danger
@@ -30,13 +31,16 @@ function ProtectedRoutes() {
             loading={logOutLoader}
             onClick={onLogout}
           />
-        </div>
-      </Header>
-      <Content style={{padding: '0 50px'}}>
+        </div> */}
+
+      {/* </Header> */}
+      <Content style={{ padding: '0 50px' }}>
         <Switch>
-          {routes.map(({component: Component, path, exact}, index) => (
+          {routes.map(({ component: Component, path, exact }, index) => (
             <Route path={`/${path}`} key={index} exact={exact}>
-              <Component/>
+              <DoubleNavbar>
+                <Component />
+              </DoubleNavbar>
             </Route>
           ))}
         </Switch>
