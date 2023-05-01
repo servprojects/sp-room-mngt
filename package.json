@@ -11,15 +11,24 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
+        "@types/react": "^18.2.0",
+        "babel-plugin-root-import": "^6.6.0",
         "eslint": "^7.20.0",
         "laravel-mix": "^6.0.6",
         "postcss": "^8.1.14",
-        "resolve-url-loader": "^3.1.2"
+        "resolve-url-loader": "^3.1.2",
+        "ts-loader": "^9.4.2",
+        "typescript": "^5.0.4"
     },
     "dependencies": {
         "@ant-design/icons": "^4.4.0",
         "@babel/eslint-parser": "^7.12.16",
+        "@babel/plugin-transform-typescript": "^7.21.3",
+        "@emotion/react": "^11.10.8",
+        "@mantine/core": "^6.0.9",
+        "@mantine/hooks": "^6.0.9",
         "@reduxjs/toolkit": "^1.5.0",
+        "@tabler/icons-react": "^2.17.0",
         "antd": "^4.12.2",
         "axios": "^0.21.1",
         "react": "^18.2.0",

@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,8 +12,33 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/js/app.tsx', 'public/js')
     .react()
+    .webpackConfig({
+        output: {
+            path: path.resolve(__dirname, 'public/js'),
+            filename: '[name].js'
+        },
+        resolve: {
+           extensions: ['.js', '.jsx', '.ts', '.tsx'],
+           alias: {
+              '@': path.resolve(__dirname, 'resources/js'),
+              'components': path.resolve(__dirname, 'resources/js/components'),
+           },
+        },
+        module: {
+            rules: [
+               {
+                  test: /\.tsx?$/,
+                  exclude: /node_modules/,
+                  loader: 'ts-loader',
+                  options: {
+                     transpileOnly: true
+                  }
+               }
+            ]
+         }
+     })
     .sass('resources/sass/app.scss', 'public/css');
 
 if (mix.inProduction()) {
