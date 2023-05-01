@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -31,7 +32,10 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request): UserResource
     {
-        $user = User::create($request->validated());
+        // $user = User::create($request->validated());
+        $validatedData = $request->validated();
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        $user = User::create($validatedData);
 
         $request->session()->regenerate();
 

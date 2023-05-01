@@ -9,7 +9,19 @@ const container = document.getElementById('app');
 const root = createRoot(container);
 root.render(
   <Provider store={store()}>
-    <MantineProvider withGlobalStyles withNormalizeCSS>
+   <MantineProvider
+      withGlobalStyles
+      withNormalizeCSS
+      theme={{
+        breakpoints: {
+          xs: '30em',
+          sm: '48em',
+          md: '64em',
+          lg: '74em',
+          xl: '90em',
+        },
+      }}
+    >
       <App />
     </MantineProvider>
   </Provider>,

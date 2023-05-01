@@ -20,7 +20,8 @@ function ProtectedRoutes() {
     });
   };
   return (
-    <Layout className="layout">
+    <>
+    {/* <Layout className="layout"> */}
       {/* <Header> */}
       {/* <div className="header-info">
           <div className="name">{name}</div>
@@ -45,7 +46,8 @@ function ProtectedRoutes() {
           ))}
         </Switch>
       </Content>
-    </Layout>
+     {/* </Layout> */}
+    </>
   );
 }
 
